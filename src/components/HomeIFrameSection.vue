@@ -2,7 +2,7 @@
   <section class="py-12 bg-gray-100 grid grid-cols-12 px-2">
     <div class="col-span-12 mb-6 md:col-span-6 px-2 md:px-8">
       <h3>BRAND NEW APP TO BLOW YOUR MIND</h3>
-      <h2 class="text-5xl font-bold text-gray-900 mb-6 mt-4">
+      <h2 class="text-3xl md:text-5xl font-bold text-gray-900 mb-6 mt-4">
         We’ve made a life that will change you
       </h2>
       <h5>We are here to listen from you deliver exellence</h5>

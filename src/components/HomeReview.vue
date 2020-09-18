@@ -1,7 +1,9 @@
 <template>
   <section>
     <div class="sectionOverlay">
-      <h2 class="text-center font-bold text-4xl text-white pt-8 pb-6">
+      <h2
+        class="text-center font-bold text-3xl md:text-4xl text-white pt-8 pb-6"
+      >
         Enjoy our Client’s Review
       </h2>
       <h5 class="text-center text-gray-400">
@@ -356,7 +358,8 @@ export default {
 }
 section {
   background-image: url("~@/assets/images/review-bg.jpg");
-  background-size: cover;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 .sectionOverlay {
   background-color: rgba(0, 0, 0, 0.6);

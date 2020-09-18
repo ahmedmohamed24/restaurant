@@ -1,7 +1,8 @@
 <template>
   <header class=" " @scroll="moveVertically">
-    <div class="overlay h-full w-full ">
-      <nav class="contacts text-white grid grid-cols-12 gab-4 py-4 ">
+    <div class="overlay h-full w-full pt-16 md:pt-0">
+      <!--this is the main navbar section in the top screen -->
+      <nav class="hidden md:grid contacts text-white grid-cols-12 gab-4 py-4 ">
         <ul class="col-span-12 sm:col-span-6 flex justify-center items-center">
           <li class="mx-3">
             <a href="" class=""
@@ -41,8 +42,9 @@
           </li>
         </ul>
       </nav>
+      <!--this is the full navbar for the wide screens-->
       <nav
-        class="mainNav transition ease-in-out duration-500 z-20 bg-transparent p-6 md:w-12/12 md:m-auto w-10/12 flex justify-between items-center md:flex-row"
+        class="mainNav md:flex hidden transition ease-in-out duration-500 z-20 bg-transparent p-6 md:w-12/12 md:m-auto w-10/12  justify-between items-center md:flex-row"
       >
         <div class="logo font-bold text-3xl goldenColor">
           <a href="#">EGY</a>
@@ -51,7 +53,7 @@
           <li class="ml-3 nav-item text-white"><a href="">Home</a></li>
           <li class="ml-3 nav-item text-white"><a href="">About</a></li>
           <li class="ml-3 nav-item text-white"><a href="">Menu</a></li>
-          <li class=" nav-item text-white"><a href="">Team</a></li>
+          <li class="ml-3 nav-item text-white"><a href="">Team</a></li>
           <li class="group nav-item text-white inline-block ml-3 ">
             <button
               class="outline-none focus:outline-none  px-3 py-1 bg-transparent rounded-sm flex items-center min-w-32"
@@ -114,6 +116,85 @@
           <li class="ml-3 nav-item text-white"><a href="">Contacts</a></li>
         </ul>
       </nav>
+      <!--this is the compressed navbar for the small screens-->
+      <nav
+        class="flex md:hidden flex-col top-0 left-0 right-0 bg-white py-4 fixed z-20 shadow"
+      >
+        <div class=" flex justify-around">
+          <div class="logo font-bold text-3xl goldenColor">
+            <a href="#">EGY</a>
+          </div>
+          <button @click="toggleNav" class="toggleNavbar md:hidden">
+            <i class="fas text-xl fa-bars"></i>
+          </button>
+        </div>
+        <ul id="toggledNavbar" class=" mt-6">
+          <li class="ml-3 nav-item text-blue-800 "><a href="">Home</a></li>
+          <li class="ml-3 nav-item text-blue-800 "><a href="">About</a></li>
+          <li class="ml-3 nav-item text-blue-800 "><a href="">Menu</a></li>
+          <li class="ml-3 nav-item text-blue-800 "><a href="">Team</a></li>
+          <li class="group nav-item text-blue-800  inline-block ">
+            <button
+              class="outline-none focus:outline-none  px-3 py-1 bg-transparent rounded-sm flex items-center min-w-32"
+            >
+              <span class="  flex-1">Blogs</span>
+              <span>
+                <svg
+                  class="fill-current h-4 w-4 transform group-hover:-rotate-180 transition duration-150 ease-in-out"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                  />
+                </svg>
+              </span>
+            </button>
+            <ul
+              class="bg-white border rounded-sm transform scale-0 group-hover:scale-100 absolute transition duration-150 ease-in-out origin-top min-w-32"
+            >
+              <li class="rounded-sm text-black  px-3 py-1 hover:bg-gray-100">
+                Food
+              </li>
+              <li class="rounded-sm  text-black px-3 py-1 hover:bg-gray-100">
+                Drinks
+              </li>
+              <li
+                class="rounded-sm  text-black relative px-3 py-1 hover:bg-gray-100"
+              >
+                <button
+                  class="w-full text-left flex items-center outline-none focus:outline-none"
+                >
+                  <span class="pr-1 text-black flex-1">Branches</span>
+                  <span class="mr-auto">
+                    <svg
+                      class="fill-current h-4 w-4 transition duration-150 ease-in-out"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                      />
+                    </svg>
+                  </span>
+                </button>
+                <ul
+                  class="bg-white border rounded-sm absolute top-0 right-0 transition duration-150 ease-in-out origin-top-left min-w-32"
+                >
+                  <li class="px-3 py-1 hover:bg-gray-100 text-black">cairo</li>
+                  <li class="px-3 py-1 hover:bg-gray-100 text-black">alex</li>
+                  <li class="px-3 py-1 hover:bg-gray-100 text-black">
+                    Qalubia
+                  </li>
+                  <li class="px-3 py-1 hover:bg-gray-100 text-black">Giza</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li class="ml-3 nav-item text-blue-800 "><a href="">Elements</a></li>
+          <li class="ml-3 nav-item text-blue-800 "><a href="">Contacts</a></li>
+        </ul>
+      </nav>
       <h3 class="text-center mt-16  mb-3 text-gray-200">
         WHENEVER WE BAKE, BAKE WITH OUR HEART
       </h3>
@@ -144,14 +225,16 @@ export default {
   name: "Header",
   data: function() {
     return {
-      btnContent: "CHECK OUR MENU"
+      isSmallScreensNavOpen: false
     };
   },
   created() {
     window.addEventListener("scroll", this.moveVertically);
+    window.addEventListener("resize", this.resizeWindow);
   },
   destroyed() {
     window.removeEventListener("scroll", this.moveVertically);
+    window.removeEventListener("resize", this.resizeWindow);
   },
   methods: {
     moveVertically: function() {
@@ -185,6 +268,27 @@ export default {
         el.classList.remove("right-0");
         el.classList.remove("shadow-2xl");
         el.classList.remove("bg-white");
+      }
+    },
+    resizeWindow: function() {
+      let windowSize = window.innerWidth;
+      if (windowSize < 767) {
+        //show the compressed navbar
+      } else {
+        //show the full navbar
+      }
+    },
+    toggleNav: function() {
+      this.isSmallScreensNavOpen = !this.isSmallScreensNavOpen;
+      document.getElementById("toggledNavbar").classList.toggle("hidden");
+      if (this.isSmallScreensNavOpen) {
+        document.querySelector(
+          ".toggleNavbar"
+        ).innerHTML = `<i class="fas text-xl fa-bars"></i>`;
+      } else {
+        document.querySelector(
+          ".toggleNavbar"
+        ).innerHTML = `<i class="fas fa-times"></i>`;
       }
     }
   }

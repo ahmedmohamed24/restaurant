@@ -1,6 +1,8 @@
 <template>
   <section class="py-12 bg-gray-100 text-center">
-    <h2 class="text-4xl  font-bold mb-3">Category of available items</h2>
+    <h2 class="text-3xl md:text-4xl  font-bold mb-3">
+      Category of available items
+    </h2>
     <p class="mb-8 text-gray-700">
       They are grilling celebrities in their own right.
     </p>
