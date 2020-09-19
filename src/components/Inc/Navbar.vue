@@ -9,6 +9,7 @@
       </div>
       <ul class="flex justify-center items-center">
         <router-link
+          active-class="goldenColor text-xl"
           to="/"
           tog="li"
           class="ml-3 nav-item text-white"
@@ -18,6 +19,7 @@
           <a>Home</a>
         </router-link>
         <router-link
+          active-class="goldenColor text-xl"
           to="/about"
           tog="li"
           class="ml-3 nav-item text-white"
@@ -27,6 +29,7 @@
           <a>About</a>
         </router-link>
         <router-link
+          active-class="goldenColor text-xl"
           to="/menu"
           tog="li"
           class="ml-3 nav-item text-white"
@@ -36,6 +39,7 @@
           <a>Menu</a>
         </router-link>
         <router-link
+          active-class="goldenColor text-xl"
           to="/team"
           tog="li"
           class="ml-3 nav-item text-white"
@@ -44,8 +48,17 @@
         >
           <a>Team</a>
         </router-link>
-
-        <li class="group nav-item text-white inline-block ml-3 ">
+        <router-link
+          active-class="goldenColor text-xl"
+          to="/recipe"
+          tog="li"
+          class="ml-3 nav-item text-white"
+          exact
+          replace
+        >
+          <a>Recipe</a>
+        </router-link>
+        <li class="group nav-item text-white inline-block ">
           <button
             class="outline-none focus:outline-none  px-3 py-1 bg-transparent rounded-sm flex items-center min-w-32"
           >
@@ -103,15 +116,6 @@
             </li>
           </ul>
         </li>
-        <router-link
-          to="/recipe"
-          tog="li"
-          class="ml-3 nav-item text-white"
-          exact
-          replace
-        >
-          <a>Recipe</a>
-        </router-link>
       </ul>
     </nav>
     <!--this is the compressed navbar for the small screens-->
@@ -126,12 +130,58 @@
           <i class="fas text-xl fa-bars"></i>
         </button>
       </div>
-      <ul id="toggledNavbar" class=" mt-6">
-        <li class="ml-3 nav-item text-blue-800 "><a href="">Home</a></li>
-        <li class="ml-3 nav-item text-blue-800 "><a href="">About</a></li>
-        <li class="ml-3 nav-item text-blue-800 "><a href="">Menu</a></li>
-        <li class="ml-3 nav-item text-blue-800 "><a href="">Team</a></li>
-        <li class="group nav-item text-blue-800  inline-block ">
+      <ul id="toggledNavbar" class=" flex flex-col mt-6">
+        <router-link
+          active-class="goldenColor text-xl"
+          to="/"
+          tog="li"
+          class="ml-3 nav-item text-white"
+          exact
+          replace
+        >
+          <a class="text-blue-800">Home</a>
+        </router-link>
+        <router-link
+          active-class="goldenColor text-xl"
+          to="/about"
+          tog="li"
+          class="ml-3 nav-item text-white"
+          exact
+          replace
+        >
+          <a class="text-blue-800">About</a>
+        </router-link>
+        <router-link
+          active-class="goldenColor text-xl"
+          to="/menu"
+          tog="li"
+          class="ml-3 nav-item text-white"
+          exact
+          replace
+        >
+          <a class="text-blue-800">Menu</a>
+        </router-link>
+        <router-link
+          active-class="goldenColor text-xl"
+          to="/team"
+          tog="li"
+          class="ml-3 nav-item text-white"
+          exact
+          replace
+        >
+          <a class="text-blue-800">Team</a>
+        </router-link>
+        <router-link
+          active-class="goldenColor text-xl"
+          to="/recipe"
+          tog="li"
+          class="ml-3 nav-item text-white"
+          exact
+          replace
+        >
+          <a class="text-blue-800">Recipe</a>
+        </router-link>
+        <li class="group nav-item text-blue-800 inline-block">
           <button
             class="outline-none focus:outline-none  px-3 py-1 bg-transparent rounded-sm flex items-center min-w-32"
           >
@@ -189,8 +239,6 @@
             </li>
           </ul>
         </li>
-        <li class="ml-3 nav-item text-blue-800 "><a href="">Elements</a></li>
-        <li class="ml-3 nav-item text-blue-800 "><a href="">Contacts</a></li>
       </ul>
     </nav>
   </div>
@@ -206,7 +254,6 @@ export default {
   },
   created() {
     window.addEventListener("scroll", this.moveVertically);
-    window.addEventListener("resize", this.resizeWindow);
   },
   destroyed() {
     window.removeEventListener("scroll", this.moveVertically);
@@ -244,14 +291,6 @@ export default {
         el.classList.remove("right-0");
         el.classList.remove("shadow-2xl");
         el.classList.remove("bg-white");
-      }
-    },
-    resizeWindow: function() {
-      let windowSize = window.innerWidth;
-      if (windowSize < 767) {
-        //show the compressed navbar
-      } else {
-        //show the full navbar
       }
     },
     toggleNav: function() {

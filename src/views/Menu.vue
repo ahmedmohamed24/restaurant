@@ -1,8 +1,8 @@
 <template>
   <div>
     <Header></Header>
-    <HomeIFrameSection></HomeIFrameSection>
     <Menus></Menus>
+    <HomeIFrameSection></HomeIFrameSection>
     <Footer></Footer>
   </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <header class=" " @scroll="moveVertically">
+  <header>
     <div class="overlay h-full w-full pt-16 md:pt-0">
       <!--this is the main navbar section in the top screen -->
       <nav class="hidden md:grid contacts text-white grid-cols-12 gab-4 py-4 ">
@@ -73,76 +73,7 @@
 import Navbar from "@/components/Inc/Navbar";
 export default {
   name: "Header",
-  components: { Navbar },
-  data: function() {
-    return {
-      isSmallScreensNavOpen: false
-    };
-  },
-  created() {
-    window.addEventListener("scroll", this.moveVertically);
-    window.addEventListener("resize", this.resizeWindow);
-  },
-  destroyed() {
-    window.removeEventListener("scroll", this.moveVertically);
-    window.removeEventListener("resize", this.resizeWindow);
-  },
-  methods: {
-    moveVertically: function() {
-      const h = window.pageYOffset - document.body.getBoundingClientRect().top;
-      const el = document.querySelector(".mainNav");
-      const navItems = document.querySelectorAll(".nav-item");
-      if (h > 400) {
-        //display the nav in wide screen
-        el.classList.add("fixed");
-        el.classList.remove("w-10/12");
-        el.classList.add("w-100");
-        el.classList.add("top-0");
-        el.classList.add("left-0");
-        el.classList.add("right-0");
-        el.classList.add("shadow-2xl");
-        el.classList.add("bg-white");
-        for (let item of navItems) {
-          item.classList.add("text-black");
-          item.classList.remove("text-white");
-        }
-      } else {
-        for (let item of navItems) {
-          item.classList.add("text-white");
-          item.classList.remove("text-black");
-        }
-        el.classList.remove("fixed");
-        el.classList.add("w-10/12");
-        el.classList.remove("w-100");
-        el.classList.remove("top-0");
-        el.classList.remove("left-0");
-        el.classList.remove("right-0");
-        el.classList.remove("shadow-2xl");
-        el.classList.remove("bg-white");
-      }
-    },
-    resizeWindow: function() {
-      let windowSize = window.innerWidth;
-      if (windowSize < 767) {
-        //show the compressed navbar
-      } else {
-        //show the full navbar
-      }
-    },
-    toggleNav: function() {
-      this.isSmallScreensNavOpen = !this.isSmallScreensNavOpen;
-      document.getElementById("toggledNavbar").classList.toggle("hidden");
-      if (this.isSmallScreensNavOpen) {
-        document.querySelector(
-          ".toggleNavbar"
-        ).innerHTML = `<i class="fas text-xl fa-bars"></i>`;
-      } else {
-        document.querySelector(
-          ".toggleNavbar"
-        ).innerHTML = `<i class="fas fa-times"></i>`;
-      }
-    }
-  }
+  components: { Navbar }
 };
 </script>
 

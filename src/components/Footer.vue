@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-blue-900 pb-16">
+  <footer class="pb-16">
     <div class="py-16 mt-16 grid grid-cols-12 gab-4">
       <div class="col-span-12 md:col-span-4 px-6 mb-4">
         <h3 class=" text-2xl md:text-3xl text-white font-bold">About Us</h3>
@@ -67,4 +67,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+footer {
+  background-color: #04091e;
+}
+</style>
